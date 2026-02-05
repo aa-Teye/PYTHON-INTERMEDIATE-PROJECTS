@@ -1,6 +1,6 @@
 """
 PDF Scout v1.0
-Author: Alex Teye Ametepey
+Author: Awonders(Alex T. Ametepey)
 Description: A simple tool to crawl a directory and find specific terms in PDFs.
 Useful for scanning lecture notes or research papers quickly.
 """
