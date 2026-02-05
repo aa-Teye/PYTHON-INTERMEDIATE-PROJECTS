@@ -1,6 +1,6 @@
 """
 SitePulse v1.0
-Author: Alex T. Ametepey(Awonders)
+Author: Alex (Awonders)
 Description: Automated tool to track website uptime.
 """
 
@@ -53,6 +53,3 @@ if __name__ == "__main__":
         "https://this-should-fail-test.com"
     ]
     
-    report = check_sites(targets)
-    log_results(report)
-    print("\n✅ Site health logged to health_log.csv")
