@@ -55,6 +55,4 @@ if __name__ == "__main__":
         "https://docs.flutter.dev/learn/pathway"
     ]
     
-    report = check_sites(targets)
-    log_results(report)
-    print("\n Site health logged to health_log.csv")
+    
