@@ -50,7 +50,8 @@ if __name__ == "__main__":
         "https://www.google.com",
         "https://www.ug.edu.gh", 
         "https://github.com",
-        "https://this-should-fail-test.com"
+        "https://this-should-fail-test.com",
+        "https://claude.ai/chat/9275b0da-f239-47c9-beb3-a9c0f615de8e"
     ]
     
     report = check_sites(targets)
