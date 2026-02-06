@@ -47,3 +47,4 @@ if __name__ == "__main__":
             print(f"\n[UNLOCKED]: {decrypted}")
         else:
             print("[ERROR] No vault file found!")
+        
