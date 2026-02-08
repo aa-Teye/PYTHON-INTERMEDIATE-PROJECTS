@@ -13,6 +13,7 @@ def distill_data(file_path):
         avg_temp = df['Temp'].mean()
         max_rain = df['Rainfall'].max()
         
+        
         print(f"Average Temperature: {avg_temp:.2f}°C")
         print(f"Highest Rainfall recorded: {max_rain}mm")
         
