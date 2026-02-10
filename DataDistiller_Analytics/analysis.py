@@ -15,15 +15,4 @@ def distill_data(file_path):
         
         
         print(f"Average Temperature: {avg_temp:.2f}°C")
-        print(f"Highest Rainfall recorded: {max_rain}mm")
-        
-        # 3. Export a Summary Report
-        summary = df.describe()
-        summary.to_csv("data_summary.csv")
-        print("\n[SUCCESS]: Summary report saved to 'data_summary.csv'")
-
-    except FileNotFoundError:
-        print("[ERROR]: The data.csv file was not found!")
-
-if __name__ == "__main__":
-    distill_data("data.csv")
+git 

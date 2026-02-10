@@ -18,3 +18,10 @@ if __name__ == "__main__":
         print("Done! Your files are now distilled.")
     else:
         print("Path not found. Please check the address and try again.")
+for file in os.listdir():
+    if os.path.isfile(file):
+        ext = file.split('.')[-1].lower()
+        if not os.path.exists(ext):
+            os.makedirs(ext)
+        shutil.move(file, f"{ext}/{file}")
+        print(f"Organized: {file} into {ext}/ folder")
