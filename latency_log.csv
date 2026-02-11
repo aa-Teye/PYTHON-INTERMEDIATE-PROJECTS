@@ -1,0 +1,7 @@
+Timestamp,Site,Latency (ms),Status
+2026-02-11 09:26:34.487415,https://google.com,1865.27,Online
+2026-02-11 09:26:35.884212,https://github.com,1396.5,Online
+2026-02-11 09:26:36.570435,https://ug.edu.gh,685.9,Online
+2026-02-11 09:32:57.132806,https://google.com,1643.51,Online
+2026-02-11 09:32:58.516130,https://github.com,1383.01,Online
+2026-02-11 09:32:59.110103,https://ug.edu.gh,593.63,Online
