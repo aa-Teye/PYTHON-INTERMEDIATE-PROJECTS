@@ -9,7 +9,11 @@ def run_analysis():
         print(f"Error: {data_path} not found! Run Project 07 first.")
         return
 
- 
+    # Load and process data with Pandas
+    df = pd.read_csv(data_path)
+    df['Latency (ms)'] = pd.to_numeric(df['Latency (ms)'], errors='coerce')
+
+    print("\n--- Project 08: Network Performance Summary ---")
     
     # Calculate Mean, Min, and Max speed
     stats = df.groupby('Site')['Latency (ms)'].agg(['mean', 'min', 'max']).reset_index()
