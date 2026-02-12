@@ -13,11 +13,7 @@ def run_analysis():
     df = pd.read_csv(data_path)
     df['Latency (ms)'] = pd.to_numeric(df['Latency (ms)'], errors='coerce')
 
-    print("\n--- Project 08: Network Performance Summary ---")
-    
-    # Calculate Mean, Min, and Max speed
-    stats = df.groupby('Site')['Latency (ms)'].agg(['mean', 'min', 'max']).reset_index()
-    stats.columns = ['Website', 'Avg Speed (ms)', 'Fastest', 'Slowest']
+    print("\n--- ms)', 'Fastest', 'Slowest']
     
     print(stats.to_string(index=False))
 
