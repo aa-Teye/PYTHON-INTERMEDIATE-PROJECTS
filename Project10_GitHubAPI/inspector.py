@@ -2,7 +2,7 @@ import requests
 import base64
 
 # 🛡️ YOUR CREDENTIALS (Preserved)
-TOKEN = "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"
+TOKEN = "YOur token here"  # Warning do not share this token publicly! Treat it like a password.
 USERNAME = "aa-Teye"
 REPO = "PYTHON-INTERMEDIATE-PROJECTS"
 
