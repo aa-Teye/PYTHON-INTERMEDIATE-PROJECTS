@@ -11,10 +11,7 @@ A professional-grade web crawler that mirrors website content. Unlike basic down
 
 ## 🚀 Features
 - [x] **Recursive Link Detection**: Automatically identifies internal URLs vs. external links.
-- [x] **Smart Folder Management**: Auto-generates directories based on sanitized domain names.
-- [x] **HTML Mirroring**: Saves formatted (prettified) versions of target pages.
-- [x] **Asset Protection**: Filters duplicates using Python `Sets`.
-- [ ] **Full-Depth Crawl**: (In Progress) Implementation of automated multi-page downloading.
+- [x] **Smart Folder Manlementation of automated multi-page downloading.
 
 ## 📝 Usage
 1. Run `python cloner.py`.
