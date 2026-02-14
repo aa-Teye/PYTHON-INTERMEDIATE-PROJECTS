@@ -3,49 +3,46 @@ from bs4 import BeautifulSoup
 import os
 from urllib.parse import urljoin, urlparse
 
-def get_site_name(url):
-    """Extracts a clean name from the URL to use as a folder name."""
-    domain = urlparse(url).netloc
-    return domain.replace('.', '_')
+def is_internal(base_url, link_url):
+    """Checks if a link belongs to the same website."""
+    base_domain = urlparse(base_url).netloc
+    link_domain = urlparse(link_url).netloc
+    return link_domain == "" or link_domain == base_domain
 
-def clone_website():
-    target_url = input("🔗 Enter the full URL to clone (e.g., https://example.com): ")
+def clone_recursive():
+    url = input("🕸️ Enter URL for Recursive Crawl: ")
+    domain_name = urlparse(url).netloc.replace('.', '_')
+    
+    if not os.path.exists(domain_name):
+        os.makedirs(domain_name)
+
+    print(f"🚀 Starting crawl on {url}...")
     
     try:
-        # 1. Fetch the website content
-        print(f"🕵️  Connecting to {target_url}...")
-        response = requests.get(target_url, timeout=10)
-        response.raise_for_status()
-        
-        # 2. Setup folders
-        folder_name = get_site_name(target_url)
-        if not os.path.exists(folder_name):
-            os.makedirs(folder_name)
-            os.makedirs(os.path.join(folder_name, "images"))
-        
-        # 3. Parse and Save HTML
+        response = requests.get(url, timeout=10)
         soup = BeautifulSoup(response.text, 'html.parser')
-        with open(os.path.join(folder_name, "index.html"), "w", encoding="utf-8") as f:
+
+        # 1. Save the Main Page
+        with open(f"{domain_name}/index.html", "w", encoding="utf-8") as f:
             f.write(soup.prettify())
-        
-        print(f"✅ HTML Saved! Look inside the '{folder_name}' folder.")
-        
-        # 4. Challenge: Download the first 5 images
-        images = soup.find_all('img')
-        print(f"📸 Found {len(images)} images. Cloning the first 5...")
-        
-        for img in images[:5]:
-            img_url = urljoin(target_url, img.get('src'))
-            img_name = os.path.basename(urlparse(img_url).path)
-            if not img_name: continue
+
+        # 2. THE RECURSIVE ENGINE: Find all internal links
+        links = soup.find_all('a', href=True)
+        internal_links = set() # Using a 'set' to avoid duplicates
+
+        for link in links:
+            href = link['href']
+            full_url = urljoin(url, href)
             
-            img_data = requests.get(img_url).content
-            with open(os.path.join(folder_name, "images", img_name), "wb") as f:
-                f.write(img_data)
-                print(f"   Downloaded: {img_name}")
+            if is_internal(url, full_url):
+                internal_links.add(full_url)
+
+        print(f"🔗 Found {len(internal_links)} internal pages to crawl later.")
+        for l in list(internal_links)[:5]: # Just show the first 5 for now
+            print(f"   -> Found: {l}")
 
     except Exception as e:
-        print(f"❌ Error during cloning: {e}")
+        print(f"❌ Error: {e}")
 
 if __name__ == "__main__":
-    clone_website()
+    clone_recursive()
