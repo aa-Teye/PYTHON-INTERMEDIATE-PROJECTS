@@ -1,19 +1,22 @@
-# Project 11: Massive Website Cloner 🛡️
+# Project 11: Massive Website Cloner (Spider Edition) 🕸️
 
 ## 📂 Overview
-A Python-based utility that clones a website's structure by downloading its HTML and its primary image assets. This tool is designed for offline study and web analysis.
+A professional-grade web crawler that mirrors website content. Unlike basic downloaders, this version includes a "Spider Engine" that identifies internal links to map out entire website structures.
 
 ## 🛠️ Tech Stack
 - **Python 3**
-- **Requests**: For handling HTTP connections.
-- **BeautifulSoup4**: For parsing and navigating the HTML tree.
-- **OS/Pathlib**: For automated directory management.
+- **Requests**: For robust HTTP connection handling.
+- **BeautifulSoup4**: For DOM parsing and link extraction.
+- **urllib.parse**: For sophisticated URL validation and domain filtering.
 
 ## 🚀 Features
-- [x] Automated folder creation based on domain name.
-- [x] Local HTML mirroring with `prettify` formatting.
-- [x] Automatic Image Asset extraction and organization.
-- [ ] Recursive page crawling (Planned for v2.0).
+- [x] **Recursive Link Detection**: Automatically identifies internal URLs vs. external links.
+- [x] **Smart Folder Management**: Auto-generates directories based on sanitized domain names.
+- [x] **HTML Mirroring**: Saves formatted (prettified) versions of target pages.
+- [x] **Asset Protection**: Filters duplicates using Python `Sets`.
+- [ ] **Full-Depth Crawl**: (In Progress) Implementation of automated multi-page downloading.
 
 ## 📝 Usage
-Run the script and enter any full URL (including https://).
+1. Run `python cloner.py`.
+2. Input the target URL.
+3. The spider will scan the page and list all internal sub-pages discovered.
