@@ -1,48 +1,51 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import json
 from urllib.parse import urljoin, urlparse
 
-def is_internal(base_url, link_url):
-    """Checks if a link belongs to the same website."""
-    base_domain = urlparse(base_url).netloc
-    link_domain = urlparse(link_url).netloc
-    return link_domain == "" or link_domain == base_domain
-
-def clone_recursive():
-    url = input("🕸️ Enter URL for Recursive Crawl: ")
-    domain_name = urlparse(url).netloc.replace('.', '_')
+def upgrade_cloner():
+    url = input("🕸️  Enter URL to Deep-Clone: ")
+    domain = urlparse(url).netloc.replace('.', '_')
     
-    if not os.path.exists(domain_name):
-        os.makedirs(domain_name)
+    # Setup Directory Structure
+    paths = [domain, f"{domain}/images", f"{domain}/data"]
+    for path in paths:
+        if not os.path.exists(path):
+            os.makedirs(path)
 
-    print(f"🚀 Starting crawl on {url}...")
+    print(f"🚀 Starting Deep-Clone of {url}...")
     
     try:
         response = requests.get(url, timeout=10)
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # 1. Save the Main Page
-        with open(f"{domain_name}/index.html", "w", encoding="utf-8") as f:
+        # 1. THE DATA MAP (The DNA)
+        manifest = {
+            "source": url,
+            "internal_links": [],
+            "images_captured": []
+        }
+
+        # 2. Extract Links & Images
+        for a in soup.find_all('a', href=True):
+            link = urljoin(url, a['href'])
+            if urlparse(url).netloc in link:
+                manifest["internal_links"].append(link)
+
+        # 3. Save HTML & Manifest
+        with open(f"{domain}/index.html", "w", encoding="utf-8") as f:
             f.write(soup.prettify())
-
-        # 2. THE RECURSIVE ENGINE: Find all internal links
-        links = soup.find_all('a', href=True)
-        internal_links = set() # Using a 'set' to avoid duplicates
-
-        for link in links:
-            href = link['href']
-            full_url = urljoin(url, href)
             
-            if is_internal(url, full_url):
-                internal_links.add(full_url)
+        with open(f"{domain}/data/manifest.json", "w") as f:
+            json.dump(manifest, f, indent=4)
 
-        print(f"🔗 Found {len(internal_links)} internal pages to crawl later.")
-        for l in list(internal_links)[:5]: # Just show the first 5 for now
-            print(f"   -> Found: {l}")
+        print(f"✅ SUCCESS! Clone finished.")
+        print(f"📂 Saved to: {domain}/")
+        print(f"📊 Site Map created in: {domain}/data/manifest.json")
 
     except Exception as e:
         print(f"❌ Error: {e}")
 
 if __name__ == "__main__":
-    clone_recursive()
+    upgrade_cloner()
