@@ -53,17 +53,4 @@ def massive_cloner_v4():
             "security_headers": dict(response.headers)
         }
 
-        with open(f"{domain}/index.html", "w", encoding="utf-8") as f:
-            f.write(soup.prettify())
-            
-        with open(f"{domain}/data/final_report.json", "w") as f:
-            json.dump(report, f, indent=4)
-
-        print(f"\n✨ MISSION ACCOMPLISHED!")
-        print(f"📁 Root: {domain}/ | 📸 Images: {img_count} | 📊 Report: data/final_report.json")
-
-    except Exception as e:
-        print(f"❌ Error: {e}")
-
-if __name__ == "__main__":
-    massive_cloner_v4()
+     
