@@ -1,0 +1,15 @@
+{
+    "audit_time": "2026-02-16 18:25:08.769765",
+    "target": "https://www.faithe.org/",
+    "performance": {
+        "latency_ms": 6410.89,
+        "status_code": 200
+    },
+    "security_headers": {
+        "Content-Security-Policy": "MISSING",
+        "Strict-Transport-Security": "max-age=15552000",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN",
+        "X-XSS-Protection": "MISSING"
+    }
+}

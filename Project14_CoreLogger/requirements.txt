@@ -1,0 +1,3 @@
+# Project 14 Dependencies
+# This engine currently relies on the Python Standard Library (3.8+).
+# No external pip packages are required for the core build.
