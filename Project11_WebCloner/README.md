@@ -1,19 +1,35 @@
-# Project 11: Massive Website Cloner (Spider Edition) 🕸️
+Project 11: Multi-Threaded Web Archiving and Audit Suite
+Overview
 
-## 📂 Overview
-A professional-grade web crawler that mirrors website content. Unlike basic downloaders, this version includes a "Spider Engine" that identifies internal links to map out entire website structures.
+This project is a high-concurrency web crawler designed for site mirroring and automated security auditing. Unlike standard sequential downloaders, this suite utilizes parallel processing to extract assets and map internal directory structures while simultaneously conducting a performance and security header analysis.
 
-## 🛠️ Tech Stack
-- **Python 3**
-- **Requests**: For robust HTTP connection handling.
-- **BeautifulSoup4**: For DOM parsing and link extraction.
-- **urllib.parse**: For sophisticated URL validation and domain filtering.
+Technical Stack
+Python 3
 
-## 🚀 Features
-- [x] **Recursive Link Detection**: Automatically identifies internal URLs vs. external links.
-- [x] **Smart Folder Manlementation of automated multi-page downloading.
+Requests: Utilized for session-based HTTP communication and custom header injection.
 
-## 📝 Usage
-1. Run `python cloner.py`.
-2. Input the target URL.
-3. The spider will scan the page and list all internal sub-pages discovered.
+BeautifulSoup4: Implemented for DOM tree traversal and precise link/asset extraction.
+
+Concurrent.futures: Facilitates multi-threaded execution to optimize I/O throughput.
+
+Standard Library (OS, JSON, Time): Used for automated file system management and data persistence.
+
+Core Functionality
+Parallel Asset Extraction: Employs a ThreadPoolExecutor to handle multiple asset downloads concurrently, significantly reducing total execution time.
+
+Identity Masking: Implements custom User-Agent headers to emulate standard browser behavior and bypass basic anti-scraping mechanisms.
+
+Automated Audit Reports: Generates a structured JSON manifest upon completion, detailing execution duration, total disk usage, and a map of discovered internal resources.
+
+Directory Sanitization: Automatically handles domain-based directory creation and manages a structured storage hierarchy for HTML, media, and technical logs.
+
+Storage Auditing: Performs a post-cloning calculation of the local repository size to provide a clear footprint of the archived data.
+
+Installation and Execution
+Ensure all dependencies are met by running:
+pip install requests beautifulsoup4
+
+Execute the primary controller:
+python cloner.py
+
+Provide the target URL when prompted. The system will initialize the directory structure and begin the concurrent extraction process.
