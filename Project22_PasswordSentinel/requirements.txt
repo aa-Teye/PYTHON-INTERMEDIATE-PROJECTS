@@ -1,0 +1,2 @@
+# No external libraries required (Uses standard 're' module)
+python>=3.10

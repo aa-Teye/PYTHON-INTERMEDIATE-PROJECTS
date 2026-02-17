@@ -1,0 +1,2 @@
+# No external libraries required (Uses standard os and shutil libs)
+python>=3.10
