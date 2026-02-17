@@ -1,0 +1,3 @@
+# This project uses Python Standard Libraries only
+# No external pip installations required
+python>=3.10
