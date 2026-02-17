@@ -1,0 +1,4 @@
+# Project 24: Cyber-Escape
+# No external dependencies required.
+# Developed by Alex Teye Ametepey
+python>=3.10
