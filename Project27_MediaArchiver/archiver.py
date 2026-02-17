@@ -20,7 +20,7 @@ def download_media(url, mode):
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            print(f"\n[🚀] Starting download...")
+            print(f"\n[] Starting download...")
             ydl.download([url])
             print(f"\n[✔] Successfully archived!")
     except Exception as e:
