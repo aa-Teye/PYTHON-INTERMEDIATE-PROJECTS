@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alex's Project Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .project-card:hover { transform: translateY(-5px); transition: 0.3s; }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Master Portfolio Portal</h1>
+            <p class="text-info">University of Ghana | IT Student Portfolio</p>
+            <hr class="bg-light w-25 mx-auto">
+        </div>
+
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card bg-secondary text-white shadow-lg h-100 project-card">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Project {{ project.id }}</h5>
+                        <h4 class="card-subtitle mb-2">{{ project.name }}</h4>
+                        <p class="card-text text-light opacity-75">{{ project.desc }}</p>
+                    </div>
+                    <div class="card-footer border-top-0 bg-transparent">
+                        <span class="badge bg-success">Status: Completed</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

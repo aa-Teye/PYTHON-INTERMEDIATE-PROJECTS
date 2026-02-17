@@ -19,9 +19,9 @@ def check_disk_usage(drive_path):
 
     # The "Guardian" Logic: Alert if free space is less than 10%
     if percent > 90:
-        print("\n⚠️  ALERT: Disk space is critically low! Time to clean up.")
+        print("\n ALERT: Disk space is critically low! Time to clean up.")
     else:
-        print("\n✅ Disk space is within healthy limits.")
+        print("\ Disk space is within healthy limits.")
 
 if __name__ == "__main__":
     # You can change this to 'C:/' or any drive you want to monitor
