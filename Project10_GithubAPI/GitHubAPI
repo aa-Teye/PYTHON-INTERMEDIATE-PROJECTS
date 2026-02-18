@@ -63,7 +63,7 @@ def run_inspector():
             
             # The Logic: Verify README presence
             if 'readme.md' in files_inside:
-                print(f"✅ {folder_name:<35} | Status: DOCUMENTED")
+                print(f" {folder_name:<35} | Status: DOCUMENTED")
             else:
                 # 🛠️ Trigger the Interactive Repair
                 status = fix_missing_readme(folder_name, headers)

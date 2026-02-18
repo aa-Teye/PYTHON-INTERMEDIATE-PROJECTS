@@ -1,0 +1,3 @@
+# Project 10: GitHub API Supervisor
+# External library for handling HTTP requests
+requests==2.31.0
